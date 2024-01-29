@@ -1,0 +1,21 @@
+.container-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-row {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+}
+
+.border {
+  margin: 10px;
+}

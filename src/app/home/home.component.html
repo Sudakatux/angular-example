@@ -1,0 +1,10 @@
+<div class="center container-column">
+  <h1>Enter a userid</h1>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>User Id</mat-label>
+      <input matInput placeholder="Ex. Pizza" name="userId" [(ngModel)]="userId">
+    </mat-form-field>
+  </form>
+  <button mat-button color="primary" (click)="startPacket()">Start Packet</button>
+</div>

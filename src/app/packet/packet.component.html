@@ -1,0 +1,18 @@
+<div class="container-column">
+    <h1>Packet</h1>
+    <div class="border">
+        <div class="container-column">
+            <!-- @if (isBrowser && hasTaskToComplete) { -->
+            <jsonforms [data]="data" [schema]="schema" [uischema]="uischema!" [renderers]="renderers"></jsonforms>
+            <div class="container-row center">
+
+                <button mat-button color="primary" (click)="back()">Back</button>
+                <button mat-button color="primary" (click)="next()">Next</button>
+            </div>
+            <!-- } -->
+            @if(!hasTaskToComplete && isBrowser){
+            <p>This packet is complete</p>
+            }
+        </div>
+    </div>
+</div>

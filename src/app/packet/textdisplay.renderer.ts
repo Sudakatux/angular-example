@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { JsonFormsAngularService, JsonFormsControl } from '@jsonforms/angular';
+import { JsonFormsAngularService, JsonFormsControl,JsonFormsModule } from '@jsonforms/angular';
 import {
   RankedTester,
   rankWith,
@@ -8,6 +8,9 @@ import {
   StatePropsOfControl,
   isMultiLineControl,
 } from '@jsonforms/core';
+import {
+  JsonFormsAngularMaterialModule,
+} from '../library';
 
 @Component({
   selector: 'TextControlRenderer',
@@ -32,6 +35,8 @@ import {
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [JsonFormsModule, JsonFormsAngularMaterialModule],
 })
 export class TextDisplayControlRenderer extends JsonFormsControl {
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit' = undefined;

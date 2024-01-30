@@ -88,6 +88,10 @@ import {
   ArrayLayoutRenderer,
   ArrayLayoutRendererTester,
 } from './layouts/array-layout.renderer';
+// import {
+//   TextDisplayControlRenderer,
+//   TextDisplayRendererTester,
+// } from '../packet/textdisplay.renderer';
 
 export * from './controls';
 export * from './layouts';
@@ -117,4 +121,8 @@ export const angularMaterialRenderers: {
   // other
   { tester: masterDetailTester, renderer: MasterListComponent },
   { tester: TableRendererTester, renderer: TableRenderer },
+  // {
+  //   tester: TextDisplayRendererTester,
+  //   renderer: TextDisplayControlRenderer,
+  // },
 ];

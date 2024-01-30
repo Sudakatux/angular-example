@@ -5,25 +5,38 @@ import {
   angularMaterialRenderers,
   JsonFormsAngularMaterialModule,
 } from '../library';
-import { JsonFormsModule } from '@jsonforms/angular';
+import { JsonFormsModule, JsonFormsControl } from '@jsonforms/angular';
 import { UISchemaElement } from '@jsonforms/core';
 import { isPlatformBrowser } from '@angular/common';
 import _omit from 'lodash/omit';
 import { HumanTaskEntry } from '@io-orkes/conductor-javascript';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {
+  TextDisplayControlRenderer,
+  TextDisplayRendererTester,
+} from './textdisplay.renderer';
 
 @Component({
   selector: 'app-packet',
   standalone: true,
-  imports: [JsonFormsModule, JsonFormsAngularMaterialModule, MatGridListModule],
+  imports: [
+    JsonFormsModule,
+    JsonFormsAngularMaterialModule,
+    MatGridListModule,
+    TextDisplayControlRenderer,
+  ],
   templateUrl: './packet.component.html',
   styleUrl: './packet.component.css',
 })
 export class PacketComponent implements OnInit {
-  renderers = [...angularMaterialRenderers];
+  renderers = [
+    ...angularMaterialRenderers,
+    { tester: TextDisplayRendererTester, renderer: TextDisplayControlRenderer },
+  ];
   uischema?: UISchemaElement;
   schema = {};
   data = {};
+  output = {};
   task?: HumanTaskEntry;
   isBrowser: boolean;
   executionId?: string;
@@ -35,6 +48,9 @@ export class PacketComponent implements OnInit {
     @Inject(PLATFORM_ID) platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
+  }
+  test(sdasd: any) {
+    this.output = sdasd;
   }
 
   ngOnInit(): void {
@@ -58,7 +74,7 @@ export class PacketComponent implements OnInit {
     //  throw new Error('Method not implemented.');
   }
   next() {
-    this.conductor.completeTask(this.task!, this.data).then((_) => {
+    this.conductor.completeTask(this.task!, this.output).then((_) => {
       this.ngOnInit();
     });
   }

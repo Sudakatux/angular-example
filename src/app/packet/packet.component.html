@@ -3,7 +3,8 @@
     <div class="border">
         <div class="container-column">
             <!-- @if (isBrowser && hasTaskToComplete) { -->
-            <jsonforms [data]="data" [schema]="schema" [uischema]="uischema!" [renderers]="renderers"></jsonforms>
+            <jsonforms [data]="data" [schema]="schema" [uischema]="uischema!" [renderers]="renderers" (dataChange)="test($event)"></jsonforms>
+            {{ data | json }}
             <div class="container-row center">
 
                 <button mat-button color="primary" (click)="back()">Back</button>
